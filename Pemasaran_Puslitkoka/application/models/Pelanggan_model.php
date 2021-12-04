@@ -22,38 +22,24 @@ class Pelanggan_model extends CI_Model{
 
     
 
-    //detail pelanggan
+     //detail pelanggan
     public function detail($id_pelanggan)
     {
-        $this->db->select('*');
+        $this->db->select('pelanggan.*, kategori_pelanggan.*');
         $this->db->from('pelanggan');
-        $this->db->where('id_pelanggan', $id_pelanggan);
-        $this->db->order_by('id_pelanggan', 'desc');
-        $query = $this->db->get();
-        return $query->row();
+
+        //join
+       $this->db->join('kategori_pelanggan', 'kategori_pelanggan.id_kategoripelanggan = pelanggan.id_kategoripelanggan', 'left');
+
+       //end join
+
+       $this->db->group_by('pelanggan.id_pelanggan');
+       $this->db->order_by('id_pelanggan', 'asc');
+       $query = $this->db->get();
+       return $query->result();
     }
 
 
-//Detail Pelanggan
-        public function detailpelanggan($id_pelanggan)
-    {
-        //  $this->db->select(' pelanggan.*,
-        //                     kategori_pelanggan.*,
-        //                     kategori_pelanggan.slug_kategoripelanggan'
-        //                    );
-        // $this->db->from('pelanggan');
-        // //JOIN
-        // $this->db->join('kategori_pelanggan', 'kategori_pelanggan.id_kategoripelanggan = pelanggan.id_kategoripelanggan', 'left');
-
-        // //END JOIN
-        // $this->db->group_by('pelanggan.id_pelanggan');
-        // $this->db->order_by('id_pelanggan', 'asc');
-        // $query = $this->db->get();
-        // return $query->result();
-        $sql = "SELECT a.*, b.* FROM pelanggan a JOIN kategori_pelanggan b ON a.id_kategoripelanggan = b.id_kategoripelanggan where a.id_pelanggan='$id_pelanggan'";
-        $data = $this->db->query($sql);
-        return $data->result();
-    }
 
 
      //Kategori Pelanggan

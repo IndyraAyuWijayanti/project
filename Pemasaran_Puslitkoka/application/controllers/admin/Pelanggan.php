@@ -27,7 +27,7 @@ class Pelanggan extends CI_Controller{
 
     public function detail($id_pelanggan)
     {
-        $pelanggan = $this->pelanggan_model->detailpelanggan($id_pelanggan);
+        $pelanggan = $this->pelanggan_model->detail($id_pelanggan);
         $data = array('title'        => 'Data Pelanggan',
                       'pelanggan'    => $pelanggan,
                       'isi'          => 'admin/pelanggan/detail'
@@ -46,9 +46,6 @@ class Pelanggan extends CI_Controller{
 
         $valid->set_rules('nama_pelanggan','Nama Pelanggan','required', 
                 array( 'required'    =>'%s harus diisi'));
-       
-       
-        
                         
         if($valid->run()){
             
@@ -93,7 +90,6 @@ class Pelanggan extends CI_Controller{
             $slug_pelanggan = url_title($this->input->post('nama_pelanggan').'-'.$this->input->post('no_identitas'),'dash',TRUE);
             $data = array(  
                 'id_user'                =>  $this->session->userdata('id_user'),
-                'id_pelanggan'           =>  $i->post('id_pelanggan'),
                 'id_kategoripelanggan'   =>  $i->post('id_kategoripelanggan'),
                 'nama_pelanggan'         =>  $i->post('nama_pelanggan'),
                 'no_identitas'           =>  $i->post('no_identitas'),
@@ -109,7 +105,6 @@ class Pelanggan extends CI_Controller{
                 'nib'                    =>  $upload_gambar['upload_data']['file_name'],
                 'siup'                   =>  $upload_gambar['upload_data']['file_name']
                
-                
                 );
             $this->pelanggan_model->tambah($data);
             $this->session->set_flashdata('sukses', 'Data telah ditambahkan');
@@ -184,10 +179,9 @@ class Pelanggan extends CI_Controller{
            $slug_pelanggan = url_title($this->input->post('nama_pelanggan').'-'.$this->input->post('no_identitas'),'dash',TRUE);
             $data = array(  
                 'id_user'                =>  $this->session->userdata('id_user'),
-                'id_pelanggan'           =>  $i->post('id_pelanggan'),
-               // 'id_kategoripelanggan'   =>  $i->post('id_kategoripelanggan'),
-               // 'nama_pelanggan'         =>  $i->post('nama_pelanggan'),
-               // 'no_identitas'           =>  $i->post('no_identitas'),
+                'id_kategoripelanggan'   =>  $i->post('id_kategoripelanggan'),
+                'nama_pelanggan'         =>  $i->post('nama_pelanggan'),
+                'no_identitas'           =>  $i->post('no_identitas'),
              //   'nama_perusahaan'        =>  $i->post('nama_perusahaan'),
               //  'hp'                     =>  $i->post('hp'),
               //  'telepon_kantor'         =>  $i->post('telepon_kantor'),
@@ -211,12 +205,11 @@ class Pelanggan extends CI_Controller{
               $slug_pelanggan = url_title($this->input->post('nama_pelanggan').'-'.$this->input->post('no_identitas'),'dash',TRUE);
               $data = array(  
                 'id_user'                =>  $this->session->userdata('id_user'),
-                'id_pelanggan'           =>  $i->post('id_pelanggan'),
-               // 'id_kategoripelanggan'   =>  $i->post('id_kategoripelanggan'),
-               // 'nama_pelanggan'         =>  $i->post('nama_pelanggan'),
-               // 'no_identitas'           =>  $i->post('no_identitas'),
-               // 'nama_perusahaan'        =>  $i->post('nama_perusahaan'),
-               // 'hp'                     =>  $i->post('hp'),
+                'id_kategoripelanggan'   =>  $i->post('id_kategoripelanggan'),
+                'nama_pelanggan'         =>  $i->post('nama_pelanggan'),
+                'no_identitas'           =>  $i->post('no_identitas'),
+                //'nama_perusahaan'        =>  $i->post('nama_perusahaan'),
+                //'hp'                     =>  $i->post('hp'),
                // 'telepon_kantor'         =>  $i->post('telepon_kantor'),
               //  'no_rekening'            =>  $i->post('no_rekening'),
               //  'alamat'                 =>  $i->post('alamat'),
