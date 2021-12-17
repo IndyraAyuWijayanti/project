@@ -100,13 +100,15 @@ class Transaksi extends CI_Controller {
                 'id_transaksi'          =>  $i->post('id_transaksi'),
                 'id_produk'             =>  $i->post('id_produk'),
                 'id_pelanggan'          =>  $i->post('id_pelanggan'),
-                'nama_pelanggan'        =>  $i->post('nama_pelanggan'),
-                'nama_produk'           =>  $i->post('nama_produk'),
+                // 'nama_pelanggan'        =>  $i->post('nama_pelanggan'),
+                // 'nama_produk'           =>  $i->post('nama_produk'),
                 'harga'                 =>  $i->post('harga'),
                 'jumlah'                =>  $i->post('jumlah'),
                 'ongkir'                =>  $i->post('ongkir'),
                 'diskon'                =>  $i->post('diskon'),
-               
+                //Untuk total jumlah produk sementara tak isi sama kayak jumlah
+                'total_jumlahproduk'    =>  $i->post('jumlah'),
+
                 'alamat_pengiriman'     =>  $i->post('alamat_pengiriman'),
                 'status_pembayaran'     =>  $i->post('status_pembayaran'),
                 'tgl_bayar1'            =>  $i->post('tgl_bayar1'),
@@ -297,8 +299,10 @@ class Transaksi extends CI_Controller {
       public function detail($id_transaksi)
        {
         $transaksi = $this->transaksi_model->detail($id_transaksi);
+        $dataTransaksi = $this->transaksi_model->listing_transaksi($id_transaksi);
         $data = array('title'        => 'Data Pelanggan',
                       'transaksi'    => $transaksi,
+                      'dataTransaksi'=> $dataTransaksi,
                       'isi'          => 'admin/transaksi/detail'
                      );
         $this->load->view('admin/layout/wrapper', $data, FALSE);

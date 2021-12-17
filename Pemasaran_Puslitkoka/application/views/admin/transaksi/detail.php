@@ -158,7 +158,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i=1; foreach($transaksi as $transaksi){ ?>
+                            <?php $i=1; foreach($dataTransaksi as $transaksi){ ?>
                             <tr>
                                 <td><?php echo $i ?></td>
                                 <td><?php echo $transaksi->kode_produk ?></td>

@@ -41,6 +41,25 @@ class Transaksi_model extends CI_Model{
        return $query->row();
     }
 
+    //Listing transaksi (untuk menampilkan di tabel pada detail transaksi)
+    public function listing_transaksi($id_transaksi)
+    {
+        $this->db->select(' transaksi.*, users.*, pelanggan.*, bank.*, produk.*');
+        $this->db->from('transaksi');
+
+        //JOIN
+        $this->db->join('users', 'users.id_user = transaksi.id_user', 'left');
+        $this->db->join('pelanggan', 'pelanggan.id_pelanggan = transaksi.id_pelanggan', 'left');
+        $this->db->join('produk', 'produk.id_produk = transaksi.id_produk', 'left');
+        $this->db->join('bank', 'bank.id_bank = transaksi.id_bank', 'left');
+      
+        $this->db->where('transaksi.id_transaksi', $id_transaksi);
+
+        //END JOIN
+        $this->db->order_by('id_transaksi', 'asc');
+        $query = $this->db->get();
+        return $query->result();
+    }
 
 
    //Pelanggan
