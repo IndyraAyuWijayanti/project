@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2021 at 02:29 PM
+-- Generation Time: Dec 17, 2021 at 04:06 AM
 -- Server version: 10.1.39-MariaDB
 -- PHP Version: 7.3.5
 
@@ -21,6 +21,26 @@ SET time_zone = "+00:00";
 --
 -- Database: `jwm_tokoonlinee`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bank`
+--
+
+CREATE TABLE `bank` (
+  `id_bank` int(11) NOT NULL,
+  `nama_bank` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `bank`
+--
+
+INSERT INTO `bank` (`id_bank`, `nama_bank`) VALUES
+(1, 'BRI'),
+(3, 'Mandiri'),
+(4, 'Tunai');
 
 -- --------------------------------------------------------
 
@@ -115,6 +135,8 @@ CREATE TABLE `header_transaksi` (
   `ongkir` int(11) NOT NULL,
   `diskon` int(11) NOT NULL,
   `total_tagihan` int(11) NOT NULL,
+  `total_jumlahproduk` int(11) NOT NULL,
+  `total_pembayaran` int(11) NOT NULL,
   `jumlah_bayar1` int(11) NOT NULL,
   `tgl_bayar1` date NOT NULL,
   `bukti_bayar1` varchar(255) NOT NULL,
@@ -136,8 +158,8 @@ CREATE TABLE `header_transaksi` (
 -- Dumping data for table `header_transaksi`
 --
 
-INSERT INTO `header_transaksi` (`id_header_transaksi`, `id_user`, `id_pelanggan`, `nama_pelanggan1`, `email`, `telepon`, `alamat`, `kode_transaksi`, `tanggal_transaksi`, `batas_bayar`, `jumlah_transaksi`, `status_bayar`, `jumlah_bayar`, `rekening_pembayaran`, `rekening_pelanggan`, `bukti_bayar`, `id_rekening`, `tanggal_bayar`, `nama_bank`, `tanggal_post`, `tanggal_update`, `kota`, `provinsi`, `klas`, `standar_harga`, `harga`, `ongkir`, `diskon`, `total_tagihan`, `jumlah_bayar1`, `tgl_bayar1`, `bukti_bayar1`, `bank1`, `tgl_bayar2`, `bukti_bayar2`, `bank2`, `jumlah_bayar2`, `tgl_bayar3`, `bukti_bayar3`, `bank3`, `jumlah_bayar3`, `nomor_spk`, `keterangan`, `tgl_cetak_do`) VALUES
-(20, 0, 31, 'Agung Wahyu Gunawan', 'agung@gmail.com', '085816908859', 'Umbulsari', '210120216F3KBPDV', '2021-01-21 13:57:24', '2021-01-21 14:57:24', 210000, 'Konfirmasi', 210000, '0123909111', 'AGung', '5677080_cf2ef623-8e05-4c90-80ec-0a6edb107d3e_648_648.jpg', 1, NULL, 'BRI', '2021-01-21 13:57:24', '2021-01-21 07:44:14', '', '', '', 0, 0, 0, 0, 0, 0, '0000-00-00', '', '', '0000-00-00', '', '', 0, '0000-00-00', '', '', 0, '', '', '0000-00-00');
+INSERT INTO `header_transaksi` (`id_header_transaksi`, `id_user`, `id_pelanggan`, `nama_pelanggan1`, `email`, `telepon`, `alamat`, `kode_transaksi`, `tanggal_transaksi`, `batas_bayar`, `jumlah_transaksi`, `status_bayar`, `jumlah_bayar`, `rekening_pembayaran`, `rekening_pelanggan`, `bukti_bayar`, `id_rekening`, `tanggal_bayar`, `nama_bank`, `tanggal_post`, `tanggal_update`, `kota`, `provinsi`, `klas`, `standar_harga`, `harga`, `ongkir`, `diskon`, `total_tagihan`, `total_jumlahproduk`, `total_pembayaran`, `jumlah_bayar1`, `tgl_bayar1`, `bukti_bayar1`, `bank1`, `tgl_bayar2`, `bukti_bayar2`, `bank2`, `jumlah_bayar2`, `tgl_bayar3`, `bukti_bayar3`, `bank3`, `jumlah_bayar3`, `nomor_spk`, `keterangan`, `tgl_cetak_do`) VALUES
+(20, 12, 31, 'Agung Wahyu Gunawan', 'agung@gmail.com', '085816908859', 'Umbulsari', '210120216F3KBPDV', '2021-01-21 13:57:24', '2021-01-21 14:57:24', 210000, 'Success', 210000, '0123909111', 'AGung', '5677080_cf2ef623-8e05-4c90-80ec-0a6edb107d3e_648_648.jpg', 1, NULL, 'BRI', '2021-01-21 13:57:24', '2021-12-06 01:00:20', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, '0000-00-00', '', '', '0000-00-00', '', '', 0, '0000-00-00', '', '', 0, '', '', '0000-00-00');
 
 --
 -- Triggers `header_transaksi`
@@ -213,7 +235,7 @@ CREATE TABLE `kategori_pelanggan` (
 --
 
 INSERT INTO `kategori_pelanggan` (`id_kategoripelanggan`, `slug_kategoripelanggan`, `nama_kategoripelanggan`, `urutan`, `tanggal_update`) VALUES
-(2, 'pekebun', 'Pekebun', 1, '2021-11-29 01:36:37'),
+(2, 'pekebunn', 'Pekebunn', 1, '2021-12-03 01:50:39'),
 (4, 'swastango', 'Swasta/NGO', 2, '2021-11-22 02:07:44'),
 (5, 'dinas', 'Dinas', 3, '2021-11-22 02:08:39'),
 (6, 'bumn', 'BUMN', 4, '2021-11-22 02:08:51');
@@ -253,6 +275,61 @@ INSERT INTO `konfigurasi` (`id_konfigurasi`, `namaweb`, `tagline`, `email`, `web
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `kota`
+--
+
+CREATE TABLE `kota` (
+  `id` int(12) NOT NULL,
+  `nm_kota` varchar(200) DEFAULT NULL,
+  `lat_kota` double DEFAULT NULL,
+  `long_kota` double DEFAULT NULL,
+  `aktif` enum('Y','T') DEFAULT 'Y',
+  `hapus` enum('Y','T') DEFAULT 'T'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kota`
+--
+
+INSERT INTO `kota` (`id`, `nm_kota`, `lat_kota`, `long_kota`, `aktif`, `hapus`) VALUES
+(1, 'Bali', NULL, NULL, 'Y', 'T'),
+(2, 'Bangka Belitung', NULL, NULL, 'Y', 'T'),
+(3, 'Banten', NULL, NULL, 'Y', 'T'),
+(4, 'Bengkulu', NULL, NULL, 'Y', 'T'),
+(5, 'DI Yogyakarta', NULL, NULL, 'Y', 'T'),
+(6, 'DKI Jakarta', NULL, NULL, 'Y', 'T'),
+(7, 'Gorontalo', NULL, NULL, 'Y', 'T'),
+(8, 'Jambi', NULL, NULL, 'Y', 'T'),
+(9, 'Jawa Barat', NULL, NULL, 'Y', 'T'),
+(10, 'Jawa Tengah', NULL, NULL, 'Y', 'T'),
+(11, 'Jawa Timur', NULL, NULL, 'Y', 'T'),
+(12, 'Kalimantan Barat', NULL, NULL, 'Y', 'T'),
+(13, 'Kalimantan Selatan', NULL, NULL, 'Y', 'T'),
+(14, 'Kalimantan Tengah', NULL, NULL, 'Y', 'T'),
+(15, 'Kalimantan Timur', NULL, NULL, 'Y', 'T'),
+(16, 'Kalimantan Utara', NULL, NULL, 'Y', 'T'),
+(17, 'Kepulauan Riau', NULL, NULL, 'Y', 'T'),
+(18, 'Lampung', NULL, NULL, 'Y', 'T'),
+(19, 'Maluku', NULL, NULL, 'Y', 'T'),
+(20, 'Maluku Utara', NULL, NULL, 'Y', 'T'),
+(21, 'Aceh', NULL, NULL, 'Y', 'T'),
+(22, 'Nusa Tenggara Barat', NULL, NULL, 'Y', 'T'),
+(23, 'Nusa Tenggara Timur', NULL, NULL, 'Y', 'T'),
+(24, 'Papua', NULL, NULL, 'Y', 'T'),
+(25, 'Papua Barat', NULL, NULL, 'Y', 'T'),
+(26, 'Riau', NULL, NULL, 'Y', 'T'),
+(27, 'Sulawesi Barat', NULL, NULL, 'Y', 'T'),
+(28, 'Sulawesi Selatan', NULL, NULL, 'Y', 'T'),
+(29, 'Sulawesi Tengah', NULL, NULL, 'Y', 'T'),
+(30, 'Sulawesi Tenggara', NULL, NULL, 'Y', 'T'),
+(31, 'Sulawesi Utara', NULL, NULL, 'Y', 'T'),
+(32, 'Sumatera Barat', NULL, NULL, 'Y', 'T'),
+(33, 'Sumatera Selatan', NULL, NULL, 'Y', 'T'),
+(34, 'Sumatera Utara', NULL, NULL, 'Y', 'T');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pelanggan`
 --
 
@@ -288,10 +365,15 @@ CREATE TABLE `pelanggan` (
 --
 
 INSERT INTO `pelanggan` (`id_pelanggan`, `id_user`, `id_kategoripelanggan`, `nama_pelanggan`, `password`, `telepon`, `alamat`, `tanggal_daftar`, `tanggal_update`, `no_identitas`, `nama_perusahaan`, `telepon_kantor`, `no_rekening`, `hp`, `kota`, `provinsi`, `gambar`, `alamat_pengiriman`, `keterangan`, `iupb`, `nib`, `siup`, `slug_pelanggan`, `status_pelanggan`) VALUES
-(5, 12, 2, 'indyra', '', NULL, 'Banyuwangiww', '2021-11-30 01:41:17', '2021-11-30 01:41:17', '357207778889900007', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'lunas', 'bukurekeningindy.jpg', 'bukurekeningindy.jpg', 'bukurekeningindy.jpg', '', ''),
-(6, 12, 2, 'indyra ayu', '', NULL, 'blitar', '2021-11-30 02:16:46', '2021-11-30 02:16:46', '357207778889900005', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'lunas', 'iconadmin.png', 'iconadmin.png', 'iconadmin.png', '', ''),
-(7, 12, 4, 'indyra ayu w', '', NULL, 'blitar', '2021-11-30 02:22:25', '2021-11-30 02:22:25', '357207778889900009', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'hutang', 'images.png', 'images.png', 'images.png', '', ''),
-(8, 12, 5, 'indyra ayu w', '', NULL, 'blitar', '2021-11-30 03:43:42', '2021-11-30 03:43:42', '357207778889900009', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'hutang', 'brnda4.png', 'brnda4.png', 'brnda4.png', '', '');
+(20, 12, 4, 'indyra aw', '', NULL, 'blitar', '2021-12-09 02:34:11', '2021-12-09 02:34:11', '357207778889900007', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'lunas', 'iconadmin3.png', 'iconadmin3.png', 'iconadmin3.png', '', ''),
+(21, 12, 4, 'Ketrinaa', '', NULL, 'blitar', '2021-12-09 02:35:14', '2021-12-09 02:35:14', '357207778889900002', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'hutang', 'kopi13.jpg', 'kopi13.jpg', 'kopi13.jpg', '', ''),
+(22, 12, 4, 'indyraa', '', NULL, 'blitar', '2021-12-09 02:37:09', '2021-12-09 02:37:09', '357207778889900002', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'hutang', 'iconadmin4.png', 'iconadmin4.png', 'iconadmin4.png', '', ''),
+(23, 12, 4, 'indyraa', '', NULL, 'blitar', '2021-12-09 02:48:24', '2021-12-09 02:48:24', '357207778889900002', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'hutang', 'beranda4.png', 'beranda4.png', 'beranda4.png', '', ''),
+(24, 12, 2, 'indyraa ayu', '', NULL, 'blitar', '2021-12-09 03:00:21', '2021-12-09 03:00:21', '357207778889900002', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'lunas', 'beranda4.png', 'beranda4.png', 'beranda4.png', '', ''),
+(25, 12, 5, 'indyraa', '', NULL, 'blitar', '2021-12-09 03:25:35', '2021-12-09 03:25:35', '357207778889900002', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'lunas', 'beranda5.png', 'beranda5.png', 'beranda5.png', '', ''),
+(26, 12, 5, 'Ketrinaa', '', NULL, 'Banyuwangiww', '2021-12-09 03:49:46', '2021-12-09 03:49:46', '357207778889900002', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'hutang', 'berannda5.png', 'berannda5.png', 'berannda5.png', '', ''),
+(27, 12, 4, 'indy', '', NULL, 'blitar', '2021-12-09 03:50:53', '2021-12-09 03:50:53', '357207778889900007', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'lunas', 'beranda6.png', 'beranda6.png', 'beranda6.png', '', ''),
+(28, 12, 4, 'indyra ayu', '', NULL, 'blitar', '2021-12-09 03:58:37', '2021-12-09 03:58:37', '357207778889900002', 'pt indy', '112232', '11222', '0856177722', 'blitar', 'jatim', '', '', 'lunas', 'beranda7.png', 'beranda7.png', 'beranda7.png', '', '');
 
 -- --------------------------------------------------------
 
@@ -361,10 +443,31 @@ CREATE TABLE `transaksi` (
   `id_pelanggan` int(11) NOT NULL,
   `kode_transaksi` varchar(255) NOT NULL,
   `id_produk` int(11) NOT NULL,
+  `id_bank` int(11) NOT NULL,
   `harga` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL,
+  `ongkir` int(11) NOT NULL,
+  `diskon` int(11) NOT NULL,
+  `total_jumlahproduk` int(11) NOT NULL,
+  `total_tagihan` int(11) NOT NULL,
+  `total_pembayaran` int(11) NOT NULL,
+  `alamat_pengiriman` varchar(255) NOT NULL,
+  `status_pembayaran` varchar(20) NOT NULL,
+  `tgl_bayar1` date NOT NULL,
+  `bukti_bayar1` varchar(255) NOT NULL,
+  `jumlah_bayar1` int(11) NOT NULL,
+  `nama_bank1` varchar(255) NOT NULL,
+  `tgl_bayar2` date NOT NULL,
+  `bukti_bayar2` varchar(255) NOT NULL,
+  `jumlah_bayar2` int(11) NOT NULL,
+  `nama_bank2` varchar(255) NOT NULL,
+  `tgl_bayar3` date NOT NULL,
+  `bukti_bayar3` varchar(255) NOT NULL,
+  `jumlah_bayar3` int(11) NOT NULL,
+  `nama_bank3` varchar(255) NOT NULL,
   `total_harga` int(11) NOT NULL,
   `tanggal_transaksi` datetime NOT NULL,
+  `slug_transaksi` varchar(255) NOT NULL,
   `tanggal_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -372,9 +475,14 @@ CREATE TABLE `transaksi` (
 -- Dumping data for table `transaksi`
 --
 
-INSERT INTO `transaksi` (`id_transaksi`, `id_user`, `id_pelanggan`, `kode_transaksi`, `id_produk`, `harga`, `jumlah`, `total_harga`, `tanggal_transaksi`, `tanggal_update`) VALUES
-(24, 0, 31, '210120216F3KBPDV', 15, 100000, 1, 100000, '2021-01-21 13:57:24', '2021-01-21 06:57:24'),
-(25, 0, 31, '210120216F3KBPDV', 17, 110000, 1, 110000, '2021-01-21 13:57:24', '2021-01-21 06:57:24');
+INSERT INTO `transaksi` (`id_transaksi`, `id_user`, `id_pelanggan`, `kode_transaksi`, `id_produk`, `id_bank`, `harga`, `jumlah`, `ongkir`, `diskon`, `total_jumlahproduk`, `total_tagihan`, `total_pembayaran`, `alamat_pengiriman`, `status_pembayaran`, `tgl_bayar1`, `bukti_bayar1`, `jumlah_bayar1`, `nama_bank1`, `tgl_bayar2`, `bukti_bayar2`, `jumlah_bayar2`, `nama_bank2`, `tgl_bayar3`, `bukti_bayar3`, `jumlah_bayar3`, `nama_bank3`, `total_harga`, `tanggal_transaksi`, `slug_transaksi`, `tanggal_update`) VALUES
+(6, 12, 20, '', 20, 4, 500, 100, 2, 2, 0, 0, 0, '2', 'lunas', '2021-12-16', 'iconadmin5.png', 33, '', '0000-00-00', '', 0, '', '0000-00-00', '', 0, '', 0, '0000-00-00 00:00:00', '', '2021-12-14 04:08:01'),
+(7, 12, 27, '', 18, 4, 500, 2, 2, 2, 0, 0, 0, '2', 'lunas', '2021-12-30', '1629209021167.jpg', 33, '', '0000-00-00', '', 0, '', '0000-00-00', '', 0, '', 0, '0000-00-00 00:00:00', '', '2021-12-15 00:58:17'),
+(8, 12, 27, '', 20, 3, 500, 100, 2, 2, 0, 0, 0, '2', 'lunas', '2021-12-31', '16292090211671.jpg', 33, '', '0000-00-00', '', 0, '', '0000-00-00', '', 0, '', 0, '0000-00-00 00:00:00', '', '2021-12-15 00:58:49'),
+(9, 12, 24, '', 18, 0, 500, 2, 2, 2, 0, 0, 0, 'Blitar', 'lunas', '2021-12-15', '745e960b-6178-4d35-8156-4f8e7a4691be1.jpg', 33, 'MANDIRI', '2021-12-29', '745e960b-6178-4d35-8156-4f8e7a4691be1.jpg', 55, 'MANDIRI', '2021-12-25', '745e960b-6178-4d35-8156-4f8e7a4691be1.jpg', 55, 'MANDIRI', 0, '0000-00-00 00:00:00', '', '2021-12-16 00:53:50'),
+(10, 12, 27, '', 21, 0, 500, 2, 2, 2, 0, 0, 0, '2', 'lunas', '2021-12-31', '16292090211672.jpg', 33, 'MANDIRI', '2021-12-25', '16292090211672.jpg', 55, 'MANDIRI', '2022-01-01', '16292090211672.jpg', 55, 'TUNAI', 0, '0000-00-00 00:00:00', '', '2021-12-16 01:59:24'),
+(11, 12, 24, '', 20, 0, 500, 2, 2, 2, 0, 0, 0, 'Blitar', 'lunas', '2021-12-31', '16292090211673.jpg', 33, 'MANDIRI', '2021-12-09', '16292090211673.jpg', 55, 'BRI', '2021-12-03', '16292090211673.jpg', 55, 'TUNAI', 0, '0000-00-00 00:00:00', '', '2021-12-16 02:01:30'),
+(12, 12, 23, '', 20, 0, 500, 2, 2, 2, 0, 0, 0, '2', 'lunas', '2021-12-22', '16292090211674.jpg', 33, 'MANDIRI', '2021-12-18', '16292090211674.jpg', 55, 'MANDIRI', '2022-01-07', '16292090211674.jpg', 55, 'TUNAI', 0, '0000-00-00 00:00:00', '', '2021-12-17 02:12:29');
 
 --
 -- Triggers `transaksi`
@@ -419,6 +527,12 @@ INSERT INTO `users` (`id_user`, `nama`, `email`, `username`, `password`, `akses_
 --
 
 --
+-- Indexes for table `bank`
+--
+ALTER TABLE `bank`
+  ADD PRIMARY KEY (`id_bank`);
+
+--
 -- Indexes for table `berita`
 --
 ALTER TABLE `berita`
@@ -454,6 +568,15 @@ ALTER TABLE `kategori_pelanggan`
 --
 ALTER TABLE `konfigurasi`
   ADD PRIMARY KEY (`id_konfigurasi`);
+
+--
+-- Indexes for table `kota`
+--
+ALTER TABLE `kota`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_nm_kota_aktif` (`id`,`nm_kota`,`aktif`),
+  ADD KEY `lat_kota` (`lat_kota`),
+  ADD KEY `long_kota` (`long_kota`);
 
 --
 -- Indexes for table `pelanggan`
@@ -493,6 +616,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `bank`
+--
+ALTER TABLE `bank`
+  MODIFY `id_bank` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `berita`
 --
 ALTER TABLE `berita`
@@ -529,10 +658,16 @@ ALTER TABLE `konfigurasi`
   MODIFY `id_konfigurasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `kota`
+--
+ALTER TABLE `kota`
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `produk`
@@ -550,7 +685,7 @@ ALTER TABLE `rekening`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `users`

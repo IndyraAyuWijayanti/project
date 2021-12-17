@@ -22,7 +22,7 @@ class Pelanggan_model extends CI_Model{
 
     
 
-     //detail pelanggan
+    //detail pelanggan
     public function detail($id_pelanggan)
     {
         $this->db->select('pelanggan.*, kategori_pelanggan.*');
@@ -36,10 +36,8 @@ class Pelanggan_model extends CI_Model{
        $this->db->group_by('pelanggan.id_pelanggan');
        $this->db->order_by('id_pelanggan', 'asc');
        $query = $this->db->get();
-       return $query->result();
+       return $query->row();
     }
-
-
 
 
      //Kategori Pelanggan
