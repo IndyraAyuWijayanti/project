@@ -34,6 +34,8 @@ class Transaksi_model extends CI_Model{
         $this->db->join('produk', 'produk.id_produk = transaksi.id_produk', 'left');
         $this->db->join('bank', 'bank.id_bank = transaksi.id_bank', 'left');
 
+        $this->db->where('transaksi.id_transaksi', $id_transaksi);
+        
        //end join
         $this->db->group_by('transaksi.id_transaksi');
         $this->db->order_by('id_transaksi', 'asc');
