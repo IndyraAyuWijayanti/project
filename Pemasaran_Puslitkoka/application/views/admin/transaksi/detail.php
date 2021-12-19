@@ -48,11 +48,11 @@
                                 <td>: <?php echo number_format($transaksi->diskon) ?></td>
                             </tr>
 
+                            
                             <tr>
-                                <th width="20%">Alamat Pengiriman</th>
-                                <th><?php echo $transaksi->alamat_pengiriman ?></th>
+                                <td>Alamat Pengiriman</td>
+                                <td>: <?php echo $transaksi->alamat_pengirimann ?></td>
                             </tr>
-
 
 
                             <tr>

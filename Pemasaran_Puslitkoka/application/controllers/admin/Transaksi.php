@@ -109,7 +109,7 @@ class Transaksi extends CI_Controller {
                 //Untuk total jumlah produk sementara tak isi sama kayak jumlah
                 'total_jumlahproduk'    =>  $i->post('jumlah'),
 
-                'alamat_pengiriman'     =>  $i->post('alamat_pengiriman'),
+                'alamat_pengirimann'     =>  $i->post('alamat_pengiriman'),
                 'status_pembayaran'     =>  $i->post('status_pembayaran'),
                 'tgl_bayar1'            =>  $i->post('tgl_bayar1'),
                 'bukti_bayar1'          =>  $upload_gambar['upload_data']['file_name'],
@@ -223,7 +223,7 @@ class Transaksi extends CI_Controller {
                 'ongkir'                =>  $i->post('ongkir'),
                 'diskon'                =>  $i->post('diskon'),
                
-                'alamat_pengiriman'     =>  $i->post('alamat_pengiriman'),
+                'alamat_pengirimann'     =>  $i->post('alamat_pengiriman'),
                 'status_pembayaran'     =>  $i->post('status_pembayaran'),
                 'tgl_bayar1'            =>  $i->post('tgl_bayar1'),
                 'bukti_bayar1'          =>  $upload_gambar['upload_data']['file_name'],
@@ -260,7 +260,7 @@ class Transaksi extends CI_Controller {
                 'ongkir'                =>  $i->post('ongkir'),
                 'diskon'                =>  $i->post('diskon'),
                
-                'alamat_pengiriman'     =>  $i->post('alamat_pengiriman'),
+                'alamat_pengirimann'     =>  $i->post('alamat_pengiriman'),
                 'status_pembayaran'     =>  $i->post('status_pembayaran'),
                 'tgl_bayar1'            =>  $i->post('tgl_bayar1'),
                // 'bukti_bayar1'          =>  $upload_gambar['upload_data']['file_name'],
@@ -305,7 +305,7 @@ class Transaksi extends CI_Controller {
                       'dataTransaksi'=> $dataTransaksi,
                       'isi'          => 'admin/transaksi/detail'
                      );
-        $this->load->view('admin/layout/wrapper', $data, FALSE);
+                $this->load->view('admin/layout/wrapper', $data, FALSE);
         }
 
     //status

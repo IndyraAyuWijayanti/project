@@ -18,7 +18,7 @@ if ($this->session->flashdata('sukses')) {
 }
 ?>
 
-	<table class="table table-bordered">
+	<table class="table table-bordered" id="example1">
 		<thead>
 			<tr>
 			<tr class="bg-success">

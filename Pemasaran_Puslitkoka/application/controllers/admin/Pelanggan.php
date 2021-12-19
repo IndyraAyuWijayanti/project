@@ -22,6 +22,7 @@ class Pelanggan extends CI_Controller{
                       'pelanggan'    => $pelanggan,
                       'isi'          => 'admin/pelanggan/list'
                      );
+
         $this->load->view('admin/layout/wrapper', $data, FALSE);
     }
 
@@ -62,6 +63,7 @@ class Pelanggan extends CI_Controller{
             $this->load->library('upload', $config);
             
             if ( ! $this->upload->do_upload('iupb')){
+
         //end validasi
 
         $data = array('title'             => 'Tambah Pelanggan',
@@ -70,6 +72,8 @@ class Pelanggan extends CI_Controller{
                       'isi'               => 'admin/pelanggan/tambahpelanggan'
                      );
         $this->load->view('admin/layout/wrapper', $data, FALSE);
+
+        
         //masuk databese
         }else{
             $upload_gambar = array('upload_data' => $this->upload->data());
