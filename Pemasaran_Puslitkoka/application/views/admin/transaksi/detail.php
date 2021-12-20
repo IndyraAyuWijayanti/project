@@ -22,6 +22,12 @@
                         </thead>
                         <tbody>
 
+                           <tr>
+                                <th width="20%">Nomor SPK</th>
+                                <td> <?php echo $transaksi->nomor_spk ?></td>
+                            </tr>
+
+
                       
                         <tr>
                                 <th width="20%">Nama Produk</th>

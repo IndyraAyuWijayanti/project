@@ -40,6 +40,13 @@
 	</div>
 </div>
 
+<div class="form-group row">
+	<label class="col-md-2 col-form-label control-label">Kode Transaksi</label>
+	<div class="col-md-5">
+		<input type="text" name="kode_transaksi" class="form-control" placeholder="Kode Transaksi"
+			value="<?php echo set_value('kode_transaksi'); ?>" required>
+	</div>
+</div>
 
 
 <div class="form-group row">

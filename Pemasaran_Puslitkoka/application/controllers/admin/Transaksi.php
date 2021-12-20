@@ -102,6 +102,7 @@ class Transaksi extends CI_Controller {
                 'id_pelanggan'          =>  $i->post('id_pelanggan'),
                 // 'nama_pelanggan'        =>  $i->post('nama_pelanggan'),
                 // 'nama_produk'           =>  $i->post('nama_produk'),
+                 'kode_transaksi'       =>  $i->post('kode_transaksi'),
                 'harga'                 =>  $i->post('harga'),
                 'jumlah'                =>  $i->post('jumlah'),
                 'ongkir'                =>  $i->post('ongkir'),
