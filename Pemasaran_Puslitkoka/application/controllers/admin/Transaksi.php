@@ -61,6 +61,8 @@ class Transaksi extends CI_Controller {
             $this->load->library('upload', $config);
             
             if ( ! $this->upload->do_upload('bukti_bayar1')){
+
+           
         //end validasi
 
         $data = array('title'             => 'Tambah Transaksi',
