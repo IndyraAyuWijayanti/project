@@ -1,6 +1,4 @@
-<?php
-function.php
-?>
+
 <html>
 <head>
   <title>Cetak Data Pelanggan</title>
@@ -14,12 +12,10 @@ function.php
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 </head>
 
-<body>
-<div class="container">
-			<h2>Data Pelanggan</h2>
-			<h4>(Inventory)</h4>
-				<div class="data-tables datatable-dark">
-					
+
+
+					<body onload="print()">
+     <div class="cetak">
 					<table class="table table-bordered" id="example1">
     <thead>
       <tr>
