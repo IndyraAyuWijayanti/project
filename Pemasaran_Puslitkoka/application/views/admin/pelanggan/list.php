@@ -4,6 +4,8 @@
 	</a>
 </p>
 
+<a class="btn btn-danger" href= " <?php echo base_url('pelanggan/print/') ?>"> <i class="fa fa-print"> </i> Print</a>
+
  
 
 

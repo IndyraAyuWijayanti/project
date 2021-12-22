@@ -72,7 +72,7 @@ $(document).ready(function() {
     } );
  
     table.buttons().container()
-        .appendTo( 'example1_wrapper .col-md-6:eq(0)' );
+        .appendTo( 'example_wrapper .col-md-6:eq(0)' );
 } );
 
 </script>

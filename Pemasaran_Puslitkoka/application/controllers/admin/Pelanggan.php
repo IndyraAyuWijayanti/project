@@ -324,6 +324,16 @@ class Pelanggan extends CI_Controller{
         $this->session->set_flashdata('sukses', 'Data berhasil dihapus');
         redirect(base_url('admin/pelanggan'),'refresh');
     }
+
+    //print data pelanggan
+    public function print()
+    {
+
+       $pelanggan = $this->pelanggan_model->listing_kategoripelanggan();
+     
+       $this->load->view('print_pelanggan', $pelanggan);
+
+    }
 }
 
 ?>
