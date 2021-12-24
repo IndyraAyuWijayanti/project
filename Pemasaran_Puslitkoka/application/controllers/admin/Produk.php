@@ -418,6 +418,44 @@ class Produk extends CI_Controller{
         $this->session->set_flashdata('sukses', 'Data telah dihapus');
         redirect(base_url('admin/produk/gambar/'.$id_produk),'refresh');
     }
+
+
+
+    //cetak excel data produk
+    public function excel()
+    {
+
+       $produk = $this->produk_model->listing();
+
+
+        $data = array(  'title'              => 'Cetak Produk',
+                        'produk'             => $produk,
+                       
+                      
+                    );
+
+      $this->load->view('admin/produk/excel', $data, FALSE); 
+         
+    }
+
+
+    //print data produk
+    public function print()
+    {
+
+       $produk = $this->produk_model->listing();
+
+
+        $data = array(  'title'              => 'Cetak Produk',
+                        'produk'             => $produk,
+                        
+                      
+                    );
+
+      
+         $this->load->view('admin/produk/print', $data, FALSE); 
+    }
+
 }
 
 ?>

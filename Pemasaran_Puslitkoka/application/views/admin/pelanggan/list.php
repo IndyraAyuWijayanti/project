@@ -4,9 +4,11 @@
 	</a>
 </p>
 
-<a class="btn btn-danger" href= " <?php echo base_url('pelanggan/print/') ?>"> <i class="fa fa-print"> </i> Print</a>
 
- 
+
+<a href="<?= base_url('admin/pelanggan/excel') ?>" class="btn btn-outline-success shadow float-right ml-2"> Excel <i class="fa fa-file-excel"> </i></a>
+
+ <a href="<?= base_url('admin/pelanggan/print') ?>" class="btn btn-outline-secondary shadow float-right ml-2"> Print <i class="fa fa-print"> </i></a>
 
 
 <?php

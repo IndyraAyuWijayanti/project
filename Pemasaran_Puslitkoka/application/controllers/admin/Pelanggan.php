@@ -325,15 +325,44 @@ class Pelanggan extends CI_Controller{
         redirect(base_url('admin/pelanggan'),'refresh');
     }
 
+
+
+    //cetak excel data pelanggan
+    public function excel()
+    {
+
+       $pelanggan = $this->pelanggan_model->listing_kategoripelanggan();
+
+
+        $data = array(  'title'              => 'Cetak Pelanggan',
+                        'pelanggan'          => $pelanggan,
+                        'kategoripelanggan'  => $kategoripelanggan,
+                      
+                    );
+
+      $this->load->view('admin/pelanggan/excel', $data, FALSE); 
+         
+    }
+
+
     //print data pelanggan
     public function print()
     {
 
        $pelanggan = $this->pelanggan_model->listing_kategoripelanggan();
-     
-       $this->load->view('print_pelanggan', $pelanggan);
 
+
+        $data = array(  'title'              => 'Cetak Pelanggan',
+                        'pelanggan'          => $pelanggan,
+                        
+                      
+                    );
+
+      
+         $this->load->view('admin/pelanggan/print', $data, FALSE); 
     }
+
+    
 }
 
 ?>

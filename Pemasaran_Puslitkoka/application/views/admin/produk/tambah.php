@@ -50,7 +50,7 @@
 
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Upload gambar produk</label>
-	<div class="col-md-10">
+	<div class="col-md-5">
 		<input type="file" name="gambar" class="form-control" required="required">
 	</div>
 </div>
