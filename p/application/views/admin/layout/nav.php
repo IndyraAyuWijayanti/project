@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="admin/layout/style.css"> 
+
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
     <!-- Brand Logo -->

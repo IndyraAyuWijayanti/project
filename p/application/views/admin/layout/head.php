@@ -22,6 +22,25 @@
   <!-- CKEditor -->
   <script src="<?php echo base_url() ?>assets/ckeditor/ckeditor.js"  type="text/javascript"></script>
   <script src="<?php echo base_url() ?>assets/ckeditor/samples/js/sample.js"  type="text/javascript"></script>
+
+  <style type="text/css">
+    .sidebar-dark-primary {
+      background-color: #008000 !important;
+    }
+
+    .nav-item p {
+      color: white;
+    }
+
+    .navbar-white {
+        background-color: #006400;
+    }
+
+    .brand-link {      
+      background-color: #006400;
+      color: black !important;
+    }
+  </style>
   
 </head>
 <body class="hold-transition sidebar-mini">

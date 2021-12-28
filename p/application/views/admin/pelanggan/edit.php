@@ -9,9 +9,8 @@
 	echo validation_errors('<div class="alert alert-warning">','</div>');
 
 	//form open
-	echo form_open_multipart(base_url('admin/pelanggan/edit/'.$pelanggan->id_pelanggan), ' class="form-horizontal"');
+	echo form_open_multipart(base_url('admin/pelanggan/edit_proses/'.$pelanggan->id_pelanggan), ' class="form-horizontal"');
 ?>
-
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Nama Pelanggan</label>
 	<div class="col-md-5">
