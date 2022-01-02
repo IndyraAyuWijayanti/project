@@ -3,8 +3,10 @@
     <ul class="navbar-nav">
       
       <li class="nav-item d-none d-sm-inline-block">
-        <p>Pusat Penelitian Kopi dan Kakao 
-        (Indonesian Coffee and Cocoa Research Institute) </p>
+        <font size="4px", color="white", face="Calibri">Pusat Penelitian Kopi dan Kakao Indonesia</font>
+        </br><font size="4px", color="orange", face="Monotype Corsiva">Indonesian Coffee and Cocoa Research Institute </font>
+
+
       </li>
      
     </ul>

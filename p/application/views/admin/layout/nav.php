@@ -1,13 +1,16 @@
 
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-5">
 
     <!-- Brand Logo -->
     <a href="<?= base_url('admin/dasbor') ?>" class="brand-link">
       <img src="<?= base_url() ?>assets/admin/dist/img/puslit.png"
            alt="puslit"
            class="brand-image img-circle elevation-3"
-           style="opacity: .9">
-      <span class="brand-text font-weight-light"><b>ICCRI </b></span>
+           style="opacity: .9"
+           >
+
+      <span class="brand-text font-weight-light"><font size="5px", color="white", ><b>ICCRI </b></font></span>
+
     </a>
 
     <!-- Sidebar -->

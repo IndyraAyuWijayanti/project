@@ -56,8 +56,9 @@
 			<td><?php echo $pelanggan->keterangan ?></td>
 		</tr>
 		<tr>
-			<th width="20%">IUPB</th>
+			<th width="20%">IUPB <a href="<?= base_url('admin/pelanggan/download') ?>" class="btn btn-outline-secondary shadow float-right ml-2"> Download<i class="fa fa-download"> </i></a></th>
 			<td><?php echo $pelanggan->iupb ?></td>
+
 		</tr>
 	
 		<tr>

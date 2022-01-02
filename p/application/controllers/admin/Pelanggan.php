@@ -201,6 +201,7 @@ class Pelanggan extends CI_Controller{
 
         if($valid->run()){
             //cek jika ganti gambar
+
             if(!empty($_FILES['iupb']['name'])){
 
             $config['upload_path']    = './assets/upload/image/';
@@ -211,102 +212,114 @@ class Pelanggan extends CI_Controller{
             
             $this->upload->initialize($config);
             if ( ! $this->upload->do_upload('iupb')){
-
-        //end validasi
-
-        $data = array('title'    => 'Edit Pelanggan: '.$pelanggan->nama_pelanggan,
-                      'kategoripelanggan' => $kategoripelanggan,
-                      'pelanggan'   => $pelanggan,
-                      'error'    => $this->upload->display_errors(),
-                      'isi'      => 'admin/pelanggan/edit'
-                     );
-        $this->load->view('admin/layout/wrapper', $data, FALSE);
-
-
-        //masuk databese
-        }else{
-              $upload_gambar_iupb = array('upload_data' => $this->upload->data());
-
-              //create thumb
-              $config['image_library']    = 'gd2';
-              $config['source_image']     = './assets/upload/image/'.$upload_gambar_iupb['upload_data']['file_name'];
-              //lokasi folder gbr thumb
-              $config['new_image']    = './assets/upload/image/thumbs/';
-              $config['create_thumb']     = TRUE;
-              $config['maintain_ratio']   = TRUE;
-              $config['width']            = 250;
-              $config['height']           = 250;
-              $config['thumb_marker']     = '';
-              
-              $this->load->library('image_lib', $config);
-              $this->image_lib->resize();
-            $this->upload->initialize($config);
-
-             if ( ! $this->upload->do_upload('nib')){
-
               //end validasi
 
-        $data = array('title'    => 'Edit Pelanggan: '.$pelanggan->nama_pelanggan,
-                      'kategoripelanggan' => $kategoripelanggan,
-                      'pelanggan'   => $pelanggan,
-                      'error'    => $this->upload->display_errors(),
-                      'isi'      => 'admin/pelanggan/edit'
-                     );
-        $this->load->view('admin/layout/wrapper', $data, FALSE);
+              $data = array('title'    => 'Edit Pelanggan: '.$pelanggan->nama_pelanggan,
+                            'kategoripelanggan' => $kategoripelanggan,
+                            'pelanggan'   => $pelanggan,
+                            'error'    => $this->upload->display_errors(),
+                            'isi'      => 'admin/pelanggan/edit'
+                           );
+              $this->load->view('admin/layout/wrapper', $data, FALSE);
+            //masuk databese
+            }else{
+            $upload_gambar_iupb = array('upload_data' => $this->upload->data());
 
-
-        //masuk databese
-        }else{
-              $upload_gambar_nib = array('upload_data' => $this->upload->data());
-
-              //create thumb
-              $config['image_library']    = 'gd2';
-              $config['source_image']     = './assets/upload/image/'.$upload_gambar_nib['upload_data']['file_name'];
-              //lokasi folder gbr thumb
-              $config['new_image']    = './assets/upload/image/thumbs/';
-              $config['create_thumb']     = TRUE;
-              $config['maintain_ratio']   = TRUE;
-              $config['width']            = 250;
-              $config['height']           = 250;
-              $config['thumb_marker']     = '';
-              
+                  //create thumb
+            $config['image_library']    = 'gd2';
+            $config['source_image']     = './assets/upload/image/'.$upload_gambar_iupb['upload_data']['file_name'];
+                  //lokasi folder gbr thumb
+            $config['new_image']    = './assets/upload/image/thumbs/';
+            $config['create_thumb']     = TRUE;
+            $config['maintain_ratio']   = TRUE;
+            $config['width']            = 250;
+            $config['height']           = 250;
+            $config['thumb_marker']     = '';
+                  
               $this->load->library('image_lib', $config);
               $this->image_lib->resize();
-            $this->upload->initialize($config);
+              $this->upload->initialize($config);
+
+              if(!empty($_FILES['nib']['name'])){
+
+              $config['upload_path']    = './assets/upload/image/';
+              $config['allowed_types']  = 'gif|jpg|png|jpeg';
+              $config['max_size']       = '2400'; //dalam kb
+              $config['max_width']      = '2024';
+              $config['max_height']     = '2024';
+
+              if ( ! $this->upload->do_upload('nib')){
+                    //end validasi
+              $data = array('title'             => 'Edit Pelanggan: '.$pelanggan->nama_pelanggan,
+                            'kategoripelanggan' => $kategoripelanggan,
+                            'pelanggan'         => $pelanggan,
+                            'error'             => $this->upload->display_errors(),
+                            'isi'               => 'admin/pelanggan/edit'
+                                 );
+                      $this->load->view('admin/layout/wrapper', $data, FALSE);
 
 
-             if ( ! $this->upload->do_upload('siup')){
-                //end validasi
+                  //masuk databese
+                }else{
+                $upload_gambar_nib = array('upload_data' => $this->upload->data());
 
-        $data = array('title'    => 'Edit Pelanggan: '.$pelanggan->nama_pelanggan,
-                      'kategoripelanggan' => $kategoripelanggan,
-                      'pelanggan'   => $pelanggan,
-                      'error'    => $this->upload->display_errors(),
-                      'isi'      => 'admin/pelanggan/edit'
-                     );
-        $this->load->view('admin/layout/wrapper', $data, FALSE);
+                        //create thumb
+                $config['image_library']    = 'gd2';
+                $config['source_image']     = './assets/upload/image/'.$upload_gambar_nib['upload_data']['file_name'];
+                        //lokasi folder gbr thumb
+                $config['new_image']    = './assets/upload/image/thumbs/';
+                $config['create_thumb']     = TRUE;
+                $config['maintain_ratio']   = TRUE;
+                $config['width']            = 250;
+                $config['height']           = 250;
+                $config['thumb_marker']     = '';
+                        
+                  $this->load->library('image_lib', $config);
+                  $this->image_lib->resize();
+                  $this->upload->initialize($config);
+
+                if(!empty($_FILES['siup']['name'])){
+
+                $config['upload_path']    = './assets/upload/image/';
+                $config['allowed_types']  = 'gif|jpg|png|jpeg';
+                $config['max_size']       = '2400'; //dalam kb
+                $config['max_width']      = '2024';
+                $config['max_height']     = '2024';
 
 
-        //masuk databese
-        }else{
-              $upload_gambar_siup = array('upload_data' => $this->upload->data());
+                  if ( ! $this->upload->do_upload('siup')){
+                          //end validasi
+                 $data = array('title'    => 'Edit Pelanggan: '.$pelanggan->nama_pelanggan,
+                               'kategoripelanggan' => $kategoripelanggan,
+                               'pelanggan'   => $pelanggan,
+                               'error'    => $this->upload->display_errors(),
+                               'isi'      => 'admin/pelanggan/edit'
+                                       );
+                          $this->load->view('admin/layout/wrapper', $data, FALSE);
 
-              //create thumb
-              $config['image_library']    = 'gd2';
-              $config['source_image']     = './assets/upload/image/'.$upload_gambar_siup['upload_data']['file_name'];
-              //lokasi folder gbr thumb
-              $config['new_image']    = './assets/upload/image/thumbs/';
-              $config['create_thumb']     = TRUE;
-              $config['maintain_ratio']   = TRUE;
-              $config['width']            = 250;
-              $config['height']           = 250;
-              $config['thumb_marker']     = '';
-              
-              $this->load->library('image_lib', $config);
-              $this->image_lib->resize();
+
+                    //masuk databese
+                  }else{
+                 $upload_gambar_siup = array('upload_data' => $this->upload->data());
+
+                              //create thumb
+                 $config['image_library']    = 'gd2';
+                 $config['source_image']     = './assets/upload/image/'.$upload_gambar_siup['upload_data']['file_name'];
+                              //lokasi folder gbr thumb
+                 $config['new_image']    = './assets/upload/image/thumbs/';
+                 $config['create_thumb']     = TRUE;
+                 $config['maintain_ratio']   = TRUE;
+                 $config['width']            = 250;
+                 $config['height']           = 250;
+                 $config['thumb_marker']     = '';
+                              
+                              $this->load->library('image_lib', $config);
+                              $this->image_lib->resize();
+                           }
+                         }
+                       }
+                  }
            }
-         }
-       }
 
             //end thumb
 
@@ -335,12 +348,11 @@ class Pelanggan extends CI_Controller{
             $this->pelanggan_model->edit($data);
             $this->session->set_flashdata('sukses', 'Data telah diedit dengan gambar');
             redirect(base_url('admin/pelanggan'),'refresh');
-
           
 
 
-        }}else{
-            //edit pelanggan tanpa edit gambar
+        }else{
+            // edit pelanggan tanpa edit gambar
             $i = $this->input;
               $slug_pelanggan = url_title($this->input->post('nama_pelanggan').'-'.$this->input->post('no_identitas'),'dash',TRUE);
               $data = array(  
@@ -357,25 +369,45 @@ class Pelanggan extends CI_Controller{
                'kota'                   =>  $i->post('kota'),
                'provinsi'               =>  $i->post('provinsi'),
                'keterangan'             =>  $i->post('keterangan')
-            //     'iupb'                   =>  $upload_gambar['upload_data']['file_name'],
-            //    'nib'                    =>  $upload_gambar['upload_data']['file_name'],
-            //     'siup'                   =>  $upload_gambar['upload_data']['file_name'],
                
                 );
             $this->pelanggan_model->edit($data);
             $this->session->set_flashdata('sukses', 'Data telah diedit tanpa gambar');
             redirect(base_url('admin/pelanggan'),'refresh');
         }
-        //end masuk database
+
+      }else{
         $data = array('title'             => 'Edit Pelanggan: '.$pelanggan->nama_pelanggan,
                       'kategoripelanggan' => $kategoripelanggan,
                       'pelanggan'         => $pelanggan,
                       'isi'               => 'admin/pelanggan/edit'
                      );
         $this->load->view('admin/layout/wrapper', $data, FALSE);
+      }
+        
     }
-    
 
+    public function download($id_pelanggan)
+    {
+       $pelanggan = $this->pelanggan_model->listing();
+
+     // $pelanggan 
+
+   $data = array(  'title'              => 'download gambar',
+                   'pelanggan'          => $pelanggan,
+                   'kategoripelanggan'  => $kategoripelanggan,
+                      
+                    );
+
+    force_download('./assets/upload/image/thumbs/'.$data->nama_berkas,NULL);
+    
+    $this->load->view('admin/pelanggan/detail', $data, FALSE); 
+
+    }
+
+
+  
+    
      //Cetak
     public function cetak($id_pelanggan)
     {

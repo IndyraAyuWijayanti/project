@@ -9,7 +9,7 @@
 	echo validation_errors('<div class="alert alert-warning">','</div>');
 
 	//form open
-	echo form_open_multipart(base_url('admin/pelanggan/edit_proses/'.$pelanggan->id_pelanggan), ' class="form-horizontal"');
+	echo form_open_multipart(base_url('admin/pelanggan/edit/'.$pelanggan->id_pelanggan), ' class="form-horizontal"');
 ?>
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Nama Pelanggan</label>
@@ -104,21 +104,21 @@
 
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Upload gambar IUPB</label>
-	<div class="col-md-10">
+	<div class="col-md-5">
 		<input type="file" name="iupb" class="form-control">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Upload gambar NIB</label>
-	<div class="col-md-10">
+	<div class="col-md-5">
 		<input type="file" name="nib" class="form-control">
 	</div>
 </div>
 
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Upload gambar SIUP</label>
-	<div class="col-md-10">
+	<div class="col-md-5">
 		<input type="file" name="siup" class="form-control">
 	</div>
 </div>
