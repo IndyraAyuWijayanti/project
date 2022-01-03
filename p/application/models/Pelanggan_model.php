@@ -97,6 +97,7 @@ class Pelanggan_model extends CI_Model{
     //edit
     public function edit($data)
     {
+        // print_r($data);
         $this->db->where('id_pelanggan', $data['id_pelanggan']);
         $this->db->update('pelanggan', $data);
         
