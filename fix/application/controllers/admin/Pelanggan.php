@@ -85,12 +85,12 @@ class Pelanggan extends CI_Controller{
                 );
             if (!empty($_FILES['iupb']['name'])) {
               if ( ! $this->upload->do_upload('iupb')){
-                $data = array('title'             => 'Tambah Pelanggan',
+                $dd = array('title'             => 'Tambah Pelanggan',
                                     'kategoripelanggan' => $kategoripelanggan,
                                     'error'             => $this->upload->display_errors(),
                                     'isi'               => 'admin/pelanggan/tambahpelanggan'
                                    );
-                $this->load->view('admin/layout/wrapper', $data, FALSE);
+                $this->load->view('admin/layout/wrapper', $dd, FALSE);
               }else{
                 $upload_gambar_iupb = array('upload_data' => $this->upload->data());
                 $data['iupb'] =  $upload_gambar_iupb['upload_data']['file_name'];
@@ -112,12 +112,12 @@ class Pelanggan extends CI_Controller{
             if (!empty($_FILES['nib']['name'])) {
               $this->upload->initialize($config);
               if ( ! $this->upload->do_upload('nib')){
-                $data = array('title'             => 'Tambah Pelanggan',
+                $dd = array('title'             => 'Tambah Pelanggan',
                                   'kategoripelanggan' => $kategoripelanggan,
                                   'error'             => $this->upload->display_errors(),
                                   'isi'               => 'admin/pelanggan/tambahpelanggan'
                                   );
-                $this->load->view('admin/layout/wrapper', $data, FALSE);
+                $this->load->view('admin/layout/wrapper', $dd, FALSE);
               }else{
                 $upload_gambar_nib = array('upload_data' => $this->upload->data());
                 $data['nib'] = $upload_gambar_nib['upload_data']['file_name'];
@@ -137,18 +137,18 @@ class Pelanggan extends CI_Controller{
 
               }
             }
-            if (!empty($_FILES['nib']['name'])) {
+            if (!empty($_FILES['siup']['name'])) {
                 $this->upload->initialize($config);
                 if ( ! $this->upload->do_upload('siup')){
 
                     //end validasi
 
-                    $data = array('title'             => 'Tambah Pelanggan',
+                    $dd = array('title'             => 'Tambah Pelanggan',
                                   'kategoripelanggan' => $kategoripelanggan,
                                   'error'             => $this->upload->display_errors(),
                                   'isi'               => 'admin/pelanggan/tambahpelanggan'
                                  );
-                    $this->load->view('admin/layout/wrapper', $data, FALSE);
+                    $this->load->view('admin/layout/wrapper', $dd, FALSE);
 
                 //masuk databese
                 }else{
@@ -225,7 +225,6 @@ class Pelanggan extends CI_Controller{
           
         if($valid->run()){
             //cek jika ganti gambar
-
             if(!empty($_FILES['iupb']['name'])){
 
             $config['upload_path']    = './assets/upload/image/';
@@ -237,14 +236,14 @@ class Pelanggan extends CI_Controller{
             $this->upload->initialize($config);
             if ( ! $this->upload->do_upload('iupb')){
               //end validasi
-
-              $data = array('title'    => 'Edit Pelanggan: '.$pelanggan->nama_pelanggan,
+              $dd = array('title'    => 'Edit Pelanggan: '.$pelanggan->nama_pelanggan,
                             'kategoripelanggan' => $kategoripelanggan,
                             'pelanggan'   => $pelanggan,
                             'error'    => $this->upload->display_errors(),
                             'isi'      => 'admin/pelanggan/edit'
                            );
-              $this->load->view('admin/layout/wrapper', $data, FALSE);
+                          //  print_r($dd);
+              $this->load->view('admin/layout/wrapper', $dd, FALSE);
             //masuk databese
             }else{
               $bool_iupb = true;  
@@ -266,7 +265,8 @@ class Pelanggan extends CI_Controller{
               $this->upload->initialize($config);
               $data['iupb'] =  $upload_gambar_iupb['upload_data']['file_name'];
 
-           }
+            }
+          }
            if(!empty($_FILES['nib']['name'])){
 
             $config['upload_path']    = './assets/upload/image/';
@@ -274,15 +274,17 @@ class Pelanggan extends CI_Controller{
             $config['max_size']       = '2400'; //dalam kb
             $config['max_width']      = '2024';
             $config['max_height']     = '2024';
+            $this->upload->initialize($config);
               if ( ! $this->upload->do_upload('nib')){
                     //end validasi
-                  $data = array('title'             => 'Edit Pelanggan: '.$pelanggan->nama_pelanggan,
+                    
+                  $dd = array('title'             => 'Edit Pelanggan: '.$pelanggan->nama_pelanggan,
                             'kategoripelanggan' => $kategoripelanggan,
                             'pelanggan'         => $pelanggan,
                             'error'             => $this->upload->display_errors(),
                             'isi'               => 'admin/pelanggan/edit'
                                  );
-                  $this->load->view('admin/layout/wrapper', $data, FALSE);
+                  $this->load->view('admin/layout/wrapper', $dd, FALSE);
 
 
                   //masuk databese
@@ -316,16 +318,16 @@ class Pelanggan extends CI_Controller{
                   $config['max_width']      = '2024';
                   $config['max_height']     = '2024';
     
-    
+                  $this->upload->initialize($config);
                     if ( ! $this->upload->do_upload('siup')){
                             //end validasi
-                   $data = array('title'    => 'Edit Pelanggan: '.$pelanggan->nama_pelanggan,
+                   $dd = array('title'    => 'Edit Pelanggan: '.$pelanggan->nama_pelanggan,
                                  'kategoripelanggan' => $kategoripelanggan,
                                  'pelanggan'   => $pelanggan,
                                  'error'    => $this->upload->display_errors(),
                                  'isi'      => 'admin/pelanggan/edit'
                                          );
-                            $this->load->view('admin/layout/wrapper', $data, FALSE);
+                            $this->load->view('admin/layout/wrapper', $dd, FALSE);
     
     
                       //masuk databese
@@ -353,12 +355,17 @@ class Pelanggan extends CI_Controller{
            
             // $this->pelanggan_model->edit($data);
 
-        }
-        // if($bool_iupb == true && $bool_nib == true &&  $bool_siup == true){
-          $this->pelanggan_model->edit($data);
+        // echo "<pre>";
+        // print_r($data);
+        // var_dump($bool_iupb);
+        // var_dump($bool_nib);
+        // var_dump($bool_siup);
+        // print_r($_FILES);
+        if($bool_iupb == true || $bool_nib == true ||  $bool_siup == true ||($bool_nib == false && $bool_iupb == false && $bool_siup == false)){
+        $this->pelanggan_model->edit($data);
         $this->session->set_flashdata('sukses', 'Data telah berhasil diedit');
         redirect(base_url('admin/pelanggan'),'refresh');
-        // }
+        }
       }else{
         $data = array('title'             => 'Edit Pelanggan: '.$pelanggan->nama_pelanggan,
                       'kategoripelanggan' => $kategoripelanggan,
