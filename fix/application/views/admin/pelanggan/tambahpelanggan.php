@@ -109,19 +109,19 @@
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Upload gambar IUPB</label>
 	<div class="col-md-5">
-		<input type="file" name="iupb" class="form-control" required="">
+		<input type="file" name="iupb" class="form-control" >
 	</div>
 </div>
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Upload gambar NIB</label>
 	<div class="col-md-5">
-		<input type="file" name="nib" class="form-control" required="required">
+		<input type="file" name="nib" class="form-control" >
 	</div>
 </div>
 <div class="form-group row">
 	<label class="col-md-2 col-form-label control-label">Upload gambar SIUP</label>
 	<div class="col-md-5">
-		<input type="file" name="siup" class="form-control" required="required">
+		<input type="file" name="siup" class="form-control" >
 	</div>
 </div>
 
