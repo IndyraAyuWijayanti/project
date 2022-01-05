@@ -352,11 +352,11 @@ class Pelanggan extends CI_Controller{
             // $this->pelanggan_model->edit($data);
 
         }
-        if($bool_iupb == true && $bool_nib == true &&   $bool_siup == true){
+        // if($bool_iupb == true && $bool_nib == true &&  $bool_siup == true){
           $this->pelanggan_model->edit($data);
         $this->session->set_flashdata('sukses', 'Data telah berhasil diedit');
         redirect(base_url('admin/pelanggan'),'refresh');
-        }
+        // }
       }else{
         $data = array('title'             => 'Edit Pelanggan: '.$pelanggan->nama_pelanggan,
                       'kategoripelanggan' => $kategoripelanggan,

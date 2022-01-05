@@ -58,10 +58,6 @@ if($this->session->flashdata('sukses')) {
 echo form_open(base_url('login'));
 ?>
 
-//form open login
-echo form_open(base_url('login'));
-?>
-
         <div class="input-group mb-3">
           <input type="text" name="username" class="form-control" placeholder="Username">
           <div class="input-group-append">
