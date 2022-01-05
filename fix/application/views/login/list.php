@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Welcome Administrator</title>
+  <title><?= $title ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,13 +21,20 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="<?= base_url() ?>"><b> Welcome Administrator </b></a>
+    <a href="<?= base_url() ?>"><b><?= $title ?></b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
 
       <p class="login-box-msg">Masukkan username dan password</p>
+
+
+
+
+
+
+
 
 <?php
 // Notifikasi error
@@ -48,11 +55,15 @@ if($this->session->flashdata('sukses')) {
 }
 
 //form open login
-echo form_open(base_url('login/proses_login'));
+echo form_open(base_url('login'));
+?>
+
+//form open login
+echo form_open(base_url('login'));
 ?>
 
         <div class="input-group mb-3">
-          <input type="text" name="username" class="form-control" placeholder="Username" required="required">
+          <input type="text" name="username" class="form-control" placeholder="Username">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -60,7 +71,7 @@ echo form_open(base_url('login/proses_login'));
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Password" required="required">
+          <input type="password" name="password" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -83,6 +94,7 @@ echo form_open(base_url('login/proses_login'));
           <!-- /.col -->
         </div>
 
+
 <?php echo form_close(); ?>     
 
 
@@ -90,7 +102,7 @@ echo form_open(base_url('login/proses_login'));
 form_close();
 ?>
 
-  </div>
+</div>
 </div>
 <!-- /.login-box -->
 
