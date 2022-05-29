@@ -9,7 +9,7 @@ header("Content-Disposition: attachment; filename=Data pelanggan.xls");
 		<tr>
 		
 			<th>NO</th>
-			<th>NAMA</th>
+			<th>NAMA PRODUK</th>
 			<th>KATEGORI</th>
 			<th>HARGA</th>
 			
