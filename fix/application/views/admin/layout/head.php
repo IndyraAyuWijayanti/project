@@ -45,7 +45,7 @@
     <script src="<?= base_url() ?>assets/admin/dist/js/demo.js"></script>
 
  <style type="text/css">
-    .sidebar-dark-primary {
+    .sidebar-light-primary {
       background-color: #008000 !important;
     }
 
