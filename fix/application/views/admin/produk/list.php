@@ -26,8 +26,8 @@ if ($this->session->flashdata('sukses')) {
 		<tr>
 		<tr class="bg-success">
 			<th>NO</th>
-			<th>NAMA</th>
-			<th>KATEGORI</th>
+			<th>NAMA PRODUK</th>
+			<th>KATEGORI PRODUK</th>
 			<th>HARGA</th>
 			<th>ACTION</th>
 		</tr>
