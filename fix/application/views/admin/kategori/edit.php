@@ -7,7 +7,7 @@
 ?>
 
 <div class="form-group row">
-	<label class="col-md-2 col-form-label control-label">Nama kategori</label>
+	<label class="col-md-2 col-form-label control-label">Nama </label>
 	<div class="col-md-5">
 		<input type="text" name="nama_kategori" class="form-control" placeholder="Nama kategori"
 			value="<?php echo $kategori->nama_kategori ?>" required>
